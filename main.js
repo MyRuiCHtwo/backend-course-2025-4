@@ -91,3 +91,35 @@ function build_response(url, readError, content) {
   return { status: 200, payload: result };
 }
 
+
+function send_response(res, status, body) {
+  res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8' });
+  res.end(body);
+}
+
+
+const server = http.createServer((req, res) => {
+    try {
+        url = new URL(req.url, 'http://localhost');
+    } catch (urlError) {
+        url = null;
+    }
+    
+    fs.readFile(options.input, 'utf8', (readError, content) => {
+        const result = build_response(url, readError, content);
+        const body = JSON.stringify(result.payload);
+    
+        if (!options.output) {
+        send_response(res, result.status, body);
+        return;
+        }
+    
+        fs.writeFile(options.output, body, (writeError) => {
+        if (writeError) {
+            send_response(res, 500, JSON.stringify({ error: 'Не вдалося записати відповідь у файл' }));
+            return;
+        }
+        send_response(res, result.status, body);
+        });
+    });
+    });

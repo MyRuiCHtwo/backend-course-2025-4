@@ -1,0 +1,25 @@
+{
+  "name": "backend-course-2025-4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "dev": "node --watch main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MyRuiCHtwo/backend-course-2025-4.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/MyRuiCHtwo/backend-course-2025-4/issues"
+  },
+  "homepage": "https://github.com/MyRuiCHtwo/backend-course-2025-4#readme",
+  "dependencies": {
+    "commander": "^15.0.0"
+  }
+}

@@ -16,3 +16,24 @@ program
     .option('-o, --output <path>', 'файл, у який записується остання відповідь');
 
 program.parse();
+
+
+const options = program.opts();
+ 
+const port = Number(options.port);
+ 
+function toNumber(value) {
+  if (typeof value === 'number') {
+    return Number.isFinite(value) ? value : null;
+  }
+  if (typeof value === 'string' && value.trim() !== '') {
+    const number = Number(value);
+    return Number.isFinite(number) ? number : null;
+  }
+  return null;
+}
+ 
+function toText(value) {
+  return typeof value === 'string' && value.trim() !== '' ? value : null;
+}
+

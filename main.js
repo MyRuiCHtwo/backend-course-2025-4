@@ -61,7 +61,7 @@ function build_response(url, readError, content) {
 
     let data = null;
     try {
-        ata = JSON.parse(content.replace(/^\uFEFF/, ''));
+        data = JSON.parse(content.replace(/^\uFEFF/, ''));
     } catch (parseError) {
         data = null;
     }
@@ -100,6 +100,7 @@ function send_response(res, status, body) {
 
 
 const server = http.createServer((req, res) => {
+    let url = null;
     try {
         url = new URL(req.url, 'http://localhost');
     } catch (urlError) {
